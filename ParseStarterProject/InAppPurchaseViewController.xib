@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InAppPurchaseViewController">
+            <connections>
+                <outlet property="bannerAdView" destination="bJp-2w-x6n" id="OAa-FE-40p"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9BX-ty-ihr">
+                    <rect key="frame" x="55" y="186" width="211" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.3215163231" green="0.76692044010000004" blue="0.53991854770000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="500 نقطة">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="PurchaseProduct:" destination="-1" eventType="touchUpInside" id="nff-D4-0kE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kc7-S4-5jO">
+                    <rect key="frame" x="55" y="234" width="211" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.3215163231" green="0.76692044010000004" blue="0.53991854770000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="1000 نقطة">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="PurchaseProduct:" destination="-1" eventType="touchUpInside" id="BUM-uG-BtX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AcO-1n-OhL">
+                    <rect key="frame" x="55" y="282" width="211" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.3215163231" green="0.76692044010000004" blue="0.53991854770000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="3000 نقطة">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="PurchaseProduct:" destination="-1" eventType="touchUpInside" id="3EY-Uv-AdT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BjO-Sp-Z5g">
+                    <rect key="frame" x="55" y="330" width="211" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.3215163231" green="0.76692044010000004" blue="0.53991854770000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="8000 نقطة">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="PurchaseProduct:" destination="-1" eventType="touchUpInside" id="RXn-bo-btQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ee4-0A-tnK">
+                    <rect key="frame" x="55" y="378" width="211" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.3215163231" green="0.76692044010000004" blue="0.53991854770000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="25000 نقطة">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="PurchaseProduct:" destination="-1" eventType="touchUpInside" id="tGJ-gO-bQd"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sell.png" id="8w4-7X-4ec">
+                    <rect key="frame" x="135" y="112" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" id="EeC-2I-uq6">
+                    <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="barTintColor" red="0.1764705926" green="0.36078432199999999" blue="0.51372551919999998" alpha="1" colorSpace="deviceRGB"/>
+                    <items>
+                        <navigationItem title="شراء نقاط" id="mql-8x-y1U">
+                            <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="cuz-L2-5ih">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wI2-SL-e97">
+                                    <rect key="frame" x="16" y="6" width="45" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="تم">
+                                        <color key="titleColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="deviceRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="Back:" destination="-1" eventType="touchUpInside" id="f4c-Gg-I2U"/>
+                                    </connections>
+                                </button>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <view contentMode="scaleToFill" id="bJp-2w-x6n">
+                    <rect key="frame" x="0.0" y="416" width="320" height="51"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="deviceRGB"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sell.png" width="50" height="50"/>
+    </resources>
+</document>
