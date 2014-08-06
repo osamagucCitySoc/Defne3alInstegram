@@ -56,12 +56,12 @@
     FollowViewController *follow=[[FollowViewController alloc] initWithNibName:@"FollowViewController" bundle:nil];
     LikeViewController *like=[[LikeViewController alloc] initWithNibName:@"LikeViewController" bundle:nil];
     SettingsViewController *settings=[[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
-    UINavigationController *navigation=[[UINavigationController alloc] initWithRootViewController:like];
+    UINavigationController *navigation=[[UINavigationController alloc] initWithRootViewController:settings];
     UINavigationController *navigation1=[[UINavigationController alloc] initWithRootViewController:follow];
-     UINavigationController *navigation2=[[UINavigationController alloc] initWithRootViewController:settings];
+     UINavigationController *navigation2=[[UINavigationController alloc] initWithRootViewController:like];
     // Override point for customization after application launch.
-
-    like.title=@"ss";
+    //like.title=@"ss";
+    like.title=@"";
     follow.title=@"";
     settings.title=@"";
     _tabbar=[[UITabBarController alloc] init];

@@ -132,6 +132,8 @@
 		1E032648197EF8FB00284426 /* Icon~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E032645197EF8FB00284426 /* Icon~iphone.png */; };
 		1E0DA8F6199239C800094575 /* close-back-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0DA8F4199239C800094575 /* close-back-b.png */; };
 		1E0DA8F7199239C800094575 /* close-back-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0DA8F5199239C800094575 /* close-back-b@2x.png */; };
+		1E0DA8FA1992678F00094575 /* tabbar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0DA8F81992678F00094575 /* tabbar1.png */; };
+		1E0DA8FB1992678F00094575 /* tabbar1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0DA8F91992678F00094575 /* tabbar1@2x.png */; };
 		1ED11923197E9DB90035AA75 /* yellowbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ED11922197E9DB80035AA75 /* yellowbtn.png */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		4998650515BF305000803E05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998650415BF305000803E05 /* StoreKit.framework */; };
@@ -338,6 +340,8 @@
 		1E032645197EF8FB00284426 /* Icon~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon~iphone.png"; sourceTree = "<group>"; };
 		1E0DA8F4199239C800094575 /* close-back-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-back-b.png"; sourceTree = "<group>"; };
 		1E0DA8F5199239C800094575 /* close-back-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-back-b@2x.png"; sourceTree = "<group>"; };
+		1E0DA8F81992678F00094575 /* tabbar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar1.png; sourceTree = "<group>"; };
+		1E0DA8F91992678F00094575 /* tabbar1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar1@2x.png"; sourceTree = "<group>"; };
 		1ED11922197E9DB80035AA75 /* yellowbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowbtn.png; sourceTree = "<group>"; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4998650415BF305000803E05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -662,6 +666,8 @@
 				18DD066919628DA500F1B9FE /* settings.png */,
 				18DD066A19628DA500F1B9FE /* tabbar0.png */,
 				18DD066B19628DA500F1B9FE /* tabbar0@2x.png */,
+				1E0DA8F81992678F00094575 /* tabbar1.png */,
+				1E0DA8F91992678F00094575 /* tabbar1@2x.png */,
 				18DD066E19628DA500F1B9FE /* tabbar2.png */,
 				18DD066F19628DA500F1B9FE /* tabbar2@2x.png */,
 				18DD067019628DA500F1B9FE /* topbar.png */,
@@ -790,6 +796,7 @@
 				18DD06A519628DA500F1B9FE /* user.png in Resources */,
 				18DD069919628DA500F1B9FE /* sell.png in Resources */,
 				18DD069119628DA500F1B9FE /* logout.png in Resources */,
+				1E0DA8FB1992678F00094575 /* tabbar1@2x.png in Resources */,
 				18DD067719628DA500F1B9FE /* bar.png in Resources */,
 				18DD068119628DA500F1B9FE /* getcoins2.png in Resources */,
 				18DD067B19628DA500F1B9FE /* Default-568h@2x.png in Resources */,
@@ -803,6 +810,7 @@
 				183631B1194DEA640082E186 /* IGLoginViewController~ipad.xib in Resources */,
 				18DD069219628DA500F1B9FE /* menu.png in Resources */,
 				18DD06A019628DA500F1B9FE /* tabbar2@2x.png in Resources */,
+				1E0DA8FA1992678F00094575 /* tabbar1.png in Resources */,
 				188E9C66195CA04400B358A4 /* GetLikesViewController.xib in Resources */,
 				18DD069519628DA500F1B9FE /* profilepic.png in Resources */,
 				1E0DA8F6199239C800094575 /* close-back-b.png in Resources */,

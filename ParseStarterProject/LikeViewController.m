@@ -68,7 +68,7 @@
 			[view removeFromSuperview];
 		}
 	}
-	[controller.tabbar.tabBar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tabbar0.png"]] atIndex:0];
+	[controller.tabbar.tabBar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tabbar1.png"]] atIndex:0];
     
     coinsLabel.text=[NSString stringWithFormat:@"%@",[DataHolder DataHolderSharedInstance].UserObject[@"coins"]];
     
