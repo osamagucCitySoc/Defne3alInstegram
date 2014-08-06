@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -43,6 +43,10 @@
 -(IBAction)PurchaseProduct:(id)sender{
     
     [[InAppPurchaseManager InAppPurchaseManagerSharedInstance] PurchaseProductWithNumber:[sender tag] Delegate:self WithSelector:@selector(Purchased:) WithErrorSelector:nil];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 -(IBAction)Restore:(id)sender{

@@ -54,31 +54,66 @@
     // Dispose of any resources that can be recreated.
 }
 -(IBAction)GetLikes:(id)sender{
-
-    act.hidden=NO;
-    self.view.userInteractionEnabled=NO;
+    NSString *actionStr = @"";
+    
     if ([sender tag]==0) {
-        [self GetLikedWithcoin:16 andLikes:10];
+        actionStr = @"سيتم خصم 16 نقطة من حسابك للحصول على 10 لايكات";
     }
     else if ([sender tag]==1) {
-        [self GetLikedWithcoin:40 andLikes:25];
+        actionStr = @"سيتم خصم 40 نقطة من حسابك للحصول على 25 لايك";
     }
     else if ([sender tag]==2) {
-        [self GetLikedWithcoin:75 andLikes:50];
+        actionStr = @"سيتم خصم 75 نقطة من حسابك للحصول على 50 لايك";
     }
     else if ([sender tag]==3) {
-        [self GetLikedWithcoin:300 andLikes:200];
+        actionStr = @"سيتم خصم 300 نقطة من حسابك للحصول على 200 لايك";
     }
     else if ([sender tag]==4) {
-        [self GetLikedWithcoin:560 andLikes:400];
+        actionStr = @"سيتم خصم 560 نقطة من حسابك للحصول على 400 لايك";
     }
     else if ([sender tag]==5) {
-        [self GetLikedWithcoin:2800 andLikes:2000];
+        actionStr = @"سيتم خصم 2800 نقطة من حسابك للحصول على 2000 لايك";
+    }
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:actionStr delegate:self cancelButtonTitle:@"إلغاء" destructiveButtonTitle:nil otherButtonTitles:@"متابعة",nil];
+    [actionSheet setTag:[sender tag]];
+    [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex  {
+    switch (buttonIndex) {
+        case 0:
+        {
+            if (actionSheet.cancelButtonIndex != buttonIndex)
+            {
+                act.hidden=NO;
+                self.view.userInteractionEnabled=NO;
+            }
+            
+            if ([actionSheet tag]==0) {
+                [self GetLikedWithcoin:16 andLikes:10];
+            }
+            else if ([actionSheet tag]==1) {
+                [self GetLikedWithcoin:40 andLikes:25];
+            }
+            else if ([actionSheet tag]==2) {
+                [self GetLikedWithcoin:75 andLikes:50];
+            }
+            else if ([actionSheet tag]==3) {
+                [self GetLikedWithcoin:300 andLikes:200];
+            }
+            else if ([actionSheet tag]==4) {
+                [self GetLikedWithcoin:560 andLikes:400];
+            }
+            else if ([actionSheet tag]==5) {
+                [self GetLikedWithcoin:2800 andLikes:2000];
+            }
+        }
     }
 }
--(void)GetLikedWithcoin:(int)coins andLikes:(int)likes{
 
-    
+-(void)GetLikedWithcoin:(int)coins andLikes:(int)likes{
     PFObject *user= [DataHolder DataHolderSharedInstance].UserObject;
     [user refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         int currentCoins=[[user objectForKey:@"coins"] integerValue];
