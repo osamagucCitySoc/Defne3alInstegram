@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4F84F13F-E675-4458-8BE6-1621058ABE1A</string>
+	<string>BBAA2246-3F90-44B2-BC0A-49C2350F4BD1</string>
 	<key>IDESourceControlProjectName</key>
 	<string>InstaLikePlus</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2376A346-ADD2-4CB0-BEE2-B3CC3407D60B</key>
-		<string>https://github.com/osamagucCitySoc/Defne3alInstegram</string>
+		<key>E9E9881C-1113-4C39-A4DB-C0E4894191E0</key>
+		<string>https://github.com/osamagucCitySoc/Defne3alInstegram.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>InstaLikePlus.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2376A346-ADD2-4CB0-BEE2-B3CC3407D60B</key>
+		<key>E9E9881C-1113-4C39-A4DB-C0E4894191E0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/osamagucCitySoc/Defne3alInstegram</string>
+	<string>https://github.com/osamagucCitySoc/Defne3alInstegram.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2376A346-ADD2-4CB0-BEE2-B3CC3407D60B</string>
+	<string>E9E9881C-1113-4C39-A4DB-C0E4894191E0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2376A346-ADD2-4CB0-BEE2-B3CC3407D60B</string>
+			<string>E9E9881C-1113-4C39-A4DB-C0E4894191E0</string>
 			<key>IDESourceControlWCCName</key>
-			<string>InstaLikePlus</string>
+			<string>Defne3alInstegram</string>
 		</dict>
 	</array>
 </dict>

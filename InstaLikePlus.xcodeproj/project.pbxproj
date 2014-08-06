@@ -130,6 +130,8 @@
 		1E032646197EF8FB00284426 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E032643197EF8FB00284426 /* Icon.png */; };
 		1E032647197EF8FB00284426 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E032644197EF8FB00284426 /* Icon@2x.png */; };
 		1E032648197EF8FB00284426 /* Icon~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E032645197EF8FB00284426 /* Icon~iphone.png */; };
+		1E0DA8F6199239C800094575 /* close-back-b.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0DA8F4199239C800094575 /* close-back-b.png */; };
+		1E0DA8F7199239C800094575 /* close-back-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E0DA8F5199239C800094575 /* close-back-b@2x.png */; };
 		1ED11923197E9DB90035AA75 /* yellowbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ED11922197E9DB80035AA75 /* yellowbtn.png */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		4998650515BF305000803E05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998650415BF305000803E05 /* StoreKit.framework */; };
@@ -334,6 +336,8 @@
 		1E032643197EF8FB00284426 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1E032644197EF8FB00284426 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		1E032645197EF8FB00284426 /* Icon~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon~iphone.png"; sourceTree = "<group>"; };
+		1E0DA8F4199239C800094575 /* close-back-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-back-b.png"; sourceTree = "<group>"; };
+		1E0DA8F5199239C800094575 /* close-back-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-back-b@2x.png"; sourceTree = "<group>"; };
 		1ED11922197E9DB80035AA75 /* yellowbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowbtn.png; sourceTree = "<group>"; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4998650415BF305000803E05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -626,6 +630,8 @@
 		18C15892195B501900651B05 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				1E0DA8F4199239C800094575 /* close-back-b.png */,
+				1E0DA8F5199239C800094575 /* close-back-b@2x.png */,
 				1E032641197EF3DB00284426 /* Default-blur.png */,
 				1ED11922197E9DB80035AA75 /* yellowbtn.png */,
 				18DD064519628DA500F1B9FE /* back.png */,
@@ -732,6 +738,7 @@
 			files = (
 				09ABC07C13A1D52D009C3FCF /* InfoPlist.strings in Resources */,
 				040908991980044000F54093 /* Images.xcassets in Resources */,
+				1E0DA8F7199239C800094575 /* close-back-b@2x.png in Resources */,
 				18DD068F19628DA500F1B9FE /* Instalogin.png in Resources */,
 				18E8BE121961FBC500E0EF42 /* GoProViewController~ipad.xib in Resources */,
 				18C15832195B403E00651B05 /* FollowViewController.xib in Resources */,
@@ -798,6 +805,7 @@
 				18DD06A019628DA500F1B9FE /* tabbar2@2x.png in Resources */,
 				188E9C66195CA04400B358A4 /* GetLikesViewController.xib in Resources */,
 				18DD069519628DA500F1B9FE /* profilepic.png in Resources */,
+				1E0DA8F6199239C800094575 /* close-back-b.png in Resources */,
 				18DD069B19628DA500F1B9FE /* tabbar0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

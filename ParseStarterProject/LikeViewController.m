@@ -51,7 +51,7 @@
     //coinsLabel.layer.borderWidth = 1.0;
     coinsLabel.layer.cornerRadius = 10;
     if ([UIScreen mainScreen].bounds.size.height==568) {
-        getlikesView.frame=CGRectMake(0, 50, 320, 500);
+        getlikesView.frame=CGRectMake(0, 70, 320, 500);
         ImageView.frame=CGRectMake(ImageView.frame.origin.x, ImageView.frame.origin.y, 280, 280);
     }
     // Do any additional setup after loading the view from its nib.
@@ -72,6 +72,11 @@
     
     
     coinsLabel.text=[NSString stringWithFormat:@"%@",[DataHolder DataHolderSharedInstance].UserObject[@"coins"]];
+    
+    if ([coinsLabel.text integerValue] < 0)
+    {
+        coinsLabel.text = @"0";
+    }
     }
 -(void)Login{
 
@@ -203,6 +208,11 @@
     PFObject *user=[DataHolder DataHolderSharedInstance].UserObject;
     [user refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         coinsLabel.text=[NSString stringWithFormat:@" %@",user[@"coins"]];
+        
+        if ([coinsLabel.text integerValue] < 0)
+        {
+            coinsLabel.text = @"0";
+        }
     }];
     
     
@@ -256,7 +266,7 @@
 	[UIView setAnimationBeginsFromCurrentState:YES];
   	[UIView setAnimationRepeatCount:0];
 	[UIView setAnimationDuration:0.5];
-	getlikesView.frame=CGRectMake(0, 50, getlikesView.frame.size.width, getlikesView.frame.size.height);
+	getlikesView.frame=CGRectMake(0, 70, getlikesView.frame.size.width, getlikesView.frame.size.height);
 	[UIView commitAnimations];
     getlikesBtn.enabled=YES;
     getcoinsBtn.enabled=NO;
