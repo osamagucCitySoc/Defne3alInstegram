@@ -362,6 +362,9 @@
         if (coins<100) {
             CurrentUserObject[@"isOnPromotion"]=[NSNumber numberWithBool:NO];
         }
+        if(coins<0)
+            coins = 0;
+        
         CurrentUserObject[@"coins"]=[NSNumber numberWithInt:coins];
 
         NSMutableArray *arr=[[NSMutableArray alloc] initWithArray:CurrentUserObject[@"appfollows"]];
