@@ -134,6 +134,11 @@
     PFObject *user=[DataHolder DataHolderSharedInstance].UserObject;
     [user refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         coinsLabel.text=[NSString stringWithFormat:@" %@",user[@"coins"]];
+        
+        if ([coinsLabel.text integerValue] < 0)
+        {
+            coinsLabel.text = @"0";
+        }
 
     }];
     
