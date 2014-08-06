@@ -70,7 +70,6 @@
 	}
 	[controller.tabbar.tabBar insertSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tabbar0.png"]] atIndex:0];
     
-    
     coinsLabel.text=[NSString stringWithFormat:@"%@",[DataHolder DataHolderSharedInstance].UserObject[@"coins"]];
     
     if ([coinsLabel.text integerValue] < 0)

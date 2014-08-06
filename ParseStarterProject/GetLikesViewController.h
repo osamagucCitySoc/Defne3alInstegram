@@ -11,7 +11,7 @@
 #import "MediaObject.h"
 #import "DataHolder.h"
 
-@interface GetLikesViewController : UIViewController{
+@interface GetLikesViewController : UIViewController<UIActionSheetDelegate>{
 
 
     IBOutlet UIImageView *imageView;

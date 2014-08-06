@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -15,6 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhg-f4-wa0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHY-Gx-O45">
                     <rect key="frame" x="55" y="155" width="211" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -28,7 +33,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIK-um-i6Y">
-                    <rect key="frame" x="55" y="204" width="211" height="34"/>
+                    <rect key="frame" x="55" y="201" width="211" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.3215163231" green="0.76692044010000004" blue="0.53991854770000003" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="عدم فولو باك !">
@@ -74,13 +79,13 @@
                     </items>
                 </navigationBar>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="9" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="jcb-jg-hjH">
-                    <rect key="frame" x="20" y="246" width="280" height="166"/>
+                    <rect key="frame" x="20" y="269" width="280" height="166"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <mutableString key="text">مع خدمة عدم فولو باك تستطيع الضغط على تابع و تحصل على نقاط و تجعل ترتيب
+                    <string key="text">مع خدمة عدم فولو باك تستطيع الضغط على تابع و تحصل على نقاط و تجعل ترتيب
 حسابك في المقدمة ليظهر للأخرين من دون أن تتابع أحد. و بالتالي تحصل مئات المتابعين
 من دون أن تتابع أحد لفترة ١٤ يوم.
 ملاحظة: الفارق بينها و بين الفولو التلقائي أنك في عدم الفولوباك تحتاج دائماً لدخول التطبيق و عمل فولو لكي يظهر حسابك في المقدمة،
-أما التلقائي يضيف لك متابعين من دون أن تعمل أي شيء حتى لا تحتاج لفتح التطبيق إلا لشراء نقاط عند نفاذها.</mutableString>
+أما التلقائي يضيف لك متابعين من دون أن تعمل أي شيء حتى لا تحتاج لفتح التطبيق إلا لشراء نقاط عند نفاذها.</string>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                     <color key="textColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
