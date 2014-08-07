@@ -166,8 +166,8 @@ WithErrorSelector:(SEL)requestErrorSelector{
     NSNumber* current = [NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]];
     
     NSLog(@"%ld",([noFbEnd longValue]-[current longValue]));
-    
-    if([noFbEnd longLongValue]>[current longLongValue])
+    long long x =[noFbEnd longLongValue]-[current longLongValue];
+    if(x>0)
     {
         if([delegate respondsToSelector:callback])
         {

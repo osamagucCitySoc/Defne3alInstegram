@@ -32,6 +32,8 @@
 
 }
 
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -96,6 +98,10 @@
 {
     [super viewDidLoad];
     
+    load = 0;
+    
+    [noFbStatusLabel setAlpha:0.0];
+    
     interstitial_ = [[GADInterstitial alloc] init];
     interstitial_.adUnitID = @"ca-app-pub-2433238124854818/2263667594";
     [interstitial_ setDelegate:self];
@@ -139,25 +145,6 @@
     
     if(![[[NSUserDefaults standardUserDefaults]objectForKey:@"ads"] isEqualToString:@"0"])
     {
-        NSString *post = @"";
-            
-//            NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
-//            NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[post length]];
-//            
-//            NSURL *url = [NSURL URLWithString:@"http://osamalogician.com/arabDevs/DefneAdefak/sendComm2.php"];
-//            
-//            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:90.0];
-//            [request setHTTPMethod:@"POST"];
-//            
-//            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-//            [request setHTTPBody:postData];
-//            
-//            getAdsConnection = [[NSURLConnection alloc]initWithRequest:request delegate:self    startImmediately:NO];
-//            
-//            [getAdsConnection scheduleInRunLoop:[NSRunLoop mainRunLoop]
-//                                                  forMode:NSDefaultRunLoopMode];
-//            [getAdsConnection start];
-        
         [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector:@selector(startAds:) userInfo: nil repeats:NO];
     }
 }
@@ -188,6 +175,26 @@
 }
 -(void)LoadMyDataLabels{
 
+    //[noFbStatusLabel setAlpha:1.0];
+    NSNumber* noFbEnd = [DataHolder DataHolderSharedInstance].UserObject[@"noFollowBackEnd"];
+    
+    NSNumber* current = [NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]];
+
+    long long x = [noFbEnd longLongValue]-[current longLongValue];
+    if(x<0)
+        x = 0;
+    
+    int rem = (int)(x/(24*60*60));
+    
+    if(rem <= 0)
+    {
+        [noFbStatusLabel setText:@"أنت غير مشترك بعدم فولو باك"];
+        [noFbStatusLabel setNeedsDisplay];
+    }else
+    {
+        [noFbStatusLabel setText:[NSString stringWithFormat:@"%@ : %i %@",@"باقي في إشتراكك لعدم الفولوباك",rem,@"يوم"]];
+        [noFbStatusLabel setNeedsDisplay];
+    }
     myName.text=[DataHolder DataHolderSharedInstance].UserProfile.username;
     myNumberOfFollowers.text=[DataHolder DataHolderSharedInstance].UserProfile.followed_by;
     myNumberOfFollowing.text=[DataHolder DataHolderSharedInstance].UserProfile.follows;
@@ -226,10 +233,11 @@
     PFQuery *query=[PFQuery queryWithClassName:@"user"];
     [query whereKey:@"coins" greaterThan:[NSNumber numberWithInt:0]];
     [query whereKey:@"appfollows" notEqualTo:[DataHolder DataHolderSharedInstance].UserObject[@"userId"]];
-    [query orderByDescending:@"isOnPromotion"];
+    if(load%2)
+        [query orderByDescending:@"isOnPromotion"];
     [query addDescendingOrder:@"lastFollow"];
     [query setLimit:[[[NSUserDefaults standardUserDefaults] objectForKey:@"accountlimit"] intValue]];
-    
+    load++;
     if (![[DataHolder DataHolderSharedInstance].userSelectedType isEqualToString:@"All Topics"]) {
         [query whereKey:@"usertype" equalTo:[DataHolder DataHolderSharedInstance].userSelectedType];
     }
@@ -324,7 +332,13 @@
     [self SetDisableUserInteraction];
     [ActivityIndicator setAlpha:1.0];
     followed ++;
-    
+    if([[[NSUserDefaults standardUserDefaults]objectForKey:@"ads"] isEqualToString:@"0"])
+    {
+        [noFbStatusLabel setAlpha:0.0f];
+    }else
+    {
+        [noFbStatusLabel setAlpha:1.0];
+    }
     if( followed%5 == 0 && ![[NSUserDefaults standardUserDefaults]boolForKey:@"removeads"] && ![[[NSUserDefaults standardUserDefaults]objectForKey:@"ads"] isEqualToString:@"0"]){
         GADRequest* request = [GADRequest request];
         [interstitial_ loadRequest:request];
@@ -333,8 +347,8 @@
     NSNumber* noFbEnd = [DataHolder DataHolderSharedInstance].UserObject[@"noFollowBackEnd"];
     
     NSNumber* current = [NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]];
-
-    followed = 11;
+    long long x = [noFbEnd longLongValue]-[current longLongValue];
+//    followed = 11;
     if(![[DataHolder DataHolderSharedInstance].UserObject[@"isOnPromotion"] boolValue] && followed % 7 == 0)
     {
         InAdProductViewController *Obj=[[InAdProductViewController alloc] initWithNibName:@"InAdProductViewController" bundle:nil];
@@ -342,7 +356,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"autoFollowAd"];
         [[NSUserDefaults standardUserDefaults]synchronize];
         [self presentViewController:Obj animated:YES completion:nil];
-    }else if([noFbEnd longLongValue]<[current longLongValue] && followed % 11 == 0)
+    }else if(x<0 && followed % 11 == 0)
     {
         InAdProductViewController *Obj=[[InAdProductViewController alloc] initWithNibName:@"InAdProductViewController" bundle:nil];
         [Obj setTag:999];
@@ -350,7 +364,7 @@
         [[NSUserDefaults standardUserDefaults]synchronize];
         [self presentViewController:Obj animated:YES completion:nil];
     }
-    /*[[WebManager WebManagerSharedInstance] FollowUserWithID:CurrentUserObject[@"userId"] Delegate:self WithSelector:@selector(FollowCallBack:) WithErrorSelector:@selector(Error:)];*/
+    [[WebManager WebManagerSharedInstance] FollowUserWithID:CurrentUserObject[@"userId"] Delegate:self WithSelector:@selector(FollowCallBack:) WithErrorSelector:@selector(Error:)];
 }
 
 -(void)FollowCallBack:(NSData*)data{
@@ -358,7 +372,18 @@
     if([[JSONParser JSONParserSharedInstance] ParseFollowResponseObject:data]){
     
         int coins=[CurrentUserObject[@"coins"] integerValue];
-        coins-=2;
+       
+        NSNumber* noFbEnd = [DataHolder DataHolderSharedInstance].UserObject[@"noFollowBackEnd"];
+        
+        NSNumber* current = [NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]];
+        
+        NSLog(@"%ld",([noFbEnd longValue]-[current longValue]));
+        
+        long long x =[noFbEnd longLongValue]-[current longLongValue];
+        
+        if(x<0)
+            coins-=2;
+        
         if (coins<100) {
             CurrentUserObject[@"isOnPromotion"]=[NSNumber numberWithBool:NO];
         }
@@ -374,16 +399,21 @@
             [[DataHolder DataHolderSharedInstance].usersArray removeObject:CurrentUserObject];
             [self CheckUserFromInstagramAndShow];
         }];
-        int mycoins=[[DataHolder DataHolderSharedInstance].UserObject[@"coins"] integerValue];
-        [DataHolder DataHolderSharedInstance].UserObject[@"coins"]=[NSNumber numberWithInt:mycoins+1];
-         [DataHolder DataHolderSharedInstance].UserObject[@"lastFollow"] = [NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]];
-        [[DataHolder DataHolderSharedInstance].UserObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [self LoadMyDataLabels];
-        }];
+        [[DataHolder DataHolderSharedInstance].UserObject refreshInBackgroundWithBlock:^(PFObject* user,NSError* error)
+         {
+             [[DataHolder DataHolderSharedInstance]setUserObject:user];
+             int mycoins=[[DataHolder DataHolderSharedInstance].UserObject[@"coins"] integerValue];
+             [DataHolder DataHolderSharedInstance].UserObject[@"coins"]=[NSNumber numberWithInt:mycoins+1];
+             [DataHolder DataHolderSharedInstance].UserObject[@"lastFollow"] = [NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]];
+             [[DataHolder DataHolderSharedInstance].UserObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                 [self LoadMyDataLabels];
+             }];
+
+         }];
     }
     else{
     
-        [[AppManager AppManagerSharedInstance] Show_Alert_With_Title:@"عذراً" message:@"لاتستطيع المتابعة حالياً، هذه المشكلة من الانستغرام وليست من البرنامج، حاول مرة أخرى بعد قليل."];
+        [[AppManager AppManagerSharedInstance] Show_Alert_With_Title:@"عذراً" message:@"لاتستطيع المتابعة حالياً، هذه المشكلة من الانستغرام وليست من البرنامج، حاول مرة أخرى بعد قليل. هذا بسبب حدود إنستغرام للمتابعات خلال الساعة و تترواح من ٢٠ ل ٤٠"];
     }
 }
 

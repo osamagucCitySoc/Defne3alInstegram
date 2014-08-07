@@ -49,6 +49,18 @@
     return UIStatusBarStyleLightContent;
 }
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if([[[NSUserDefaults standardUserDefaults]objectForKey:@"ads"] isEqualToString:@"0"])
+    {
+        [self.noFbLabel setAlpha:0.0f];
+    }else
+    {
+        [self.noFbLabel setAlpha:1.0f];
+    }
+}
 -(IBAction)Restore:(id)sender{
     
     [[InAppPurchaseManager InAppPurchaseManagerSharedInstance] Restore_ProductsWithDelegate:self WithSelector:@selector(Purchased:) WithErrorSelector:nil];

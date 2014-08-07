@@ -23,8 +23,10 @@
     IBOutlet UILabel *myNumberOfFollowing;
     IBOutlet UILabel *mytypeLabel;
     IBOutlet UILabel *mycoinsLabel;
+    IBOutlet UILabel *noFbStatusLabel;
     //UITapGestureRecognizer *tapRecognizer;
     int followed;
+    int load;
     
     IBOutlet UIImageView *userimageView;
     IBOutlet UILabel *usersName;

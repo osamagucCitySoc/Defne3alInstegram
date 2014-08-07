@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -19,6 +19,7 @@
                 <outlet property="myNumberOfFollowing" destination="FPf-Dj-LZq" id="5mc-Mj-D0Q"/>
                 <outlet property="mycoinsLabel" destination="9dY-Bn-orH" id="KL1-9e-Tx3"/>
                 <outlet property="myimageView" destination="GFa-r7-DmP" id="tYy-Rs-efP"/>
+                <outlet property="noFbStatusLabel" destination="yIl-9g-3oU" id="37q-8Z-Fx7"/>
                 <outlet property="userDescription" destination="K11-7N-KST" id="dNq-GO-J5g"/>
                 <outlet property="userNumberOfFollowers" destination="n6D-fz-Ba4" id="96z-ZL-uYN"/>
                 <outlet property="userNumberOfFollowing" destination="b6f-qL-SZj" id="rYp-yu-bmj"/>
@@ -298,6 +299,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="أنت غير مشترك بعدم فولو باك" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yIl-9g-3oU">
+                            <rect key="frame" x="10" y="0.0" width="301" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" red="0.1209680872" green="0.34125669920000001" blue="0.46498325889999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.90344769021739135" green="0.90344769021739135" blue="0.90344769021739135" alpha="1" colorSpace="calibratedRGB"/>
                 </view>

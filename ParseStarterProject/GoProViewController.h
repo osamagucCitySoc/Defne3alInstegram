@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GoProViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *noFbLabel;
 
 @end
