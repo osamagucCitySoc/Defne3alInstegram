@@ -41,8 +41,23 @@
     // Dispose of any resources that can be recreated.
 }
 -(IBAction)PurchaseProduct:(id)sender{
-    
+    if([sender tag] == 7)
+    {
+        int coins = [[DataHolder DataHolderSharedInstance].UserObject[@"coins"] integerValue];
+        if(coins < 3000)
+        {
+            UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"عفوا" message:@"لا تملك النقاط الكافية لتفعيل الخدمة. يجب على الأقل أن تملك ٣٠٠٠ نقطة" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }else
+        {
+            [self AddCoins:-3000];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:no_follow_back];
+            [self setNoFollowBack:YES];
+        }
+    }else
+    {
     [[InAppPurchaseManager InAppPurchaseManagerSharedInstance] PurchaseProductWithNumber:[sender tag] Delegate:self WithSelector:@selector(Purchased:) WithErrorSelector:nil];
+    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
@@ -84,10 +99,9 @@
     }
     if ([product isEqualToString:remove_ads]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"removeads"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     }
     if ([product isEqualToString:no_follow_back]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:no_follow_back];
-        [self setNoFollowBack:YES];
     }
     
     //updating label only.
@@ -97,16 +111,15 @@
     [DataHolder DataHolderSharedInstance].UserObject[@"noFollowBack"]=[NSNumber numberWithBool:YES];;
     [DataHolder DataHolderSharedInstance].UserObject[@"noFollowBackEnd"]=[NSNumber numberWithLongLong:([[NSDate date] timeIntervalSince1970]+(14*24*60*60))];
     [[DataHolder DataHolderSharedInstance].UserObject saveInBackground];
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"تم" message:@"تم التفعيل. شكرا لك" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 -(void)AddCoins:(int)coins{
     
-    PFQuery *query = [PFQuery queryWithClassName:@"user"];
-    [query getObjectInBackgroundWithId:[DataHolder DataHolderSharedInstance].UserObjectID block:^(PFObject *user, NSError *error) {
-        // Do something with the returned PFObject in the gameScore variable.
-        int coins=[[user objectForKey:@"coins"] integerValue]+coins;
-        user[@"coins"]=[NSNumber numberWithInt:coins];
-        [user save];
-    }];
+    [[DataHolder DataHolderSharedInstance].UserObject refresh];
+    [DataHolder DataHolderSharedInstance].UserObject[@"coins"]=[NSNumber numberWithInt:[[DataHolder DataHolderSharedInstance].UserObject[@"coins"] intValue]+coins];
+    [[DataHolder DataHolderSharedInstance].UserObject saveInBackground];
+    
 }
 -(void)Error:(NSError*)error{
     

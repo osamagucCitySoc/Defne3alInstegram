@@ -369,11 +369,17 @@ static InAppPurchaseManager *InAppPurchaseManagerSharedInstance;
 
 - (void)Transaction_Restored:(SKPaymentTransaction *)Transaction
 {
-    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"شكرا لك" message:@"تم الإسترجاع" delegate:nil cancelButtonTitle:@"تم" otherButtonTitles:nil];
+ 
+    UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"شكرا لك" message:@" تم الإسترجاع. الأن لن ترى  بار الإعلانات في كل صفحات التطبيق." delegate:nil cancelButtonTitle:@"تم" otherButtonTitles:nil];
     [alert show];
 
     NSString *ProductIdentifier = Transaction.originalTransaction.payment.productIdentifier;
     [PurchasedProductsList addObject:ProductIdentifier];
+
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"removeads"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+
+    
     [[SKPaymentQueue defaultQueue] finishTransaction: Transaction];
 }
 - (void)Transaction_Failed:(SKPaymentTransaction *)Transaction 
@@ -399,6 +405,7 @@ static InAppPurchaseManager *InAppPurchaseManagerSharedInstance;
 - (void)Return_Back_Successfully
 {
 	if(self.Delegate && self.Selector)
+    {
         if([self.Delegate respondsToSelector:self.Selector])
         {
             #pragma clang diagnostic push
@@ -410,10 +417,12 @@ static InAppPurchaseManager *InAppPurchaseManagerSharedInstance;
         {
             NSLog(@"No responce");
         }
+    }
 }
 - (void)Return_Back_Error
 {
     if(self.Delegate && self.ErrorSelector)
+    {
         if([self.Delegate respondsToSelector:self.ErrorSelector])
         {
             #pragma clang diagnostic push
@@ -425,6 +434,7 @@ static InAppPurchaseManager *InAppPurchaseManagerSharedInstance;
         {
             NSLog(@"No responce");
         }
+    }
 }
 -(void)dealloc
 {

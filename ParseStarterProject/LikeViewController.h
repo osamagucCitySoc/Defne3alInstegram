@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsyncImageView.h"
 
 @interface LikeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
 
-    IBOutlet UIImageView *ImageView;
+//    IBOutlet UIImageView *ImageView;
     IBOutlet UIButton *skipBtn;
     IBOutlet UIButton *likeBtn;
     IBOutlet UIButton *reloadBtn;
@@ -23,6 +24,7 @@
     IBOutlet UIActivityIndicatorView *act;
     IBOutlet UIActivityIndicatorView *act2;
     IBOutlet UIButton *reloadUserMedia;
+    IBOutlet AsyncImageView *asyncImageView;
     UITapGestureRecognizer *HideTapGesture;
 
     NSArray *DataArray;

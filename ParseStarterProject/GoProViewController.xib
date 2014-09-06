@@ -37,13 +37,12 @@
                     <rect key="frame" x="55" y="201" width="211" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.3215163231" green="0.76692044010000004" blue="0.53991854770000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="عدم فولو باك !">
+                    <state key="normal" title="عدم فولو باك ! ٣٠٠٠ نقطة">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="PurchaseProduct:" destination="-1" eventType="touchUpInside" id="cOs-wi-td0"/>
-                        <action selector="Restore:" destination="-1" eventType="touchUpInside" id="ah8-UZ-VeQ"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmE-6c-pde">

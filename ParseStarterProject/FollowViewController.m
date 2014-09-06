@@ -233,9 +233,14 @@
     PFQuery *query=[PFQuery queryWithClassName:@"user"];
     [query whereKey:@"coins" greaterThan:[NSNumber numberWithInt:0]];
     [query whereKey:@"appfollows" notEqualTo:[DataHolder DataHolderSharedInstance].UserObject[@"userId"]];
-    if(load%2)
+    if(load%2 == 0)
+    {
         [query orderByDescending:@"isOnPromotion"];
-    [query addDescendingOrder:@"lastFollow"];
+        [query addDescendingOrder:@"lastFollow"];
+    }else
+    {
+        [query orderByDescending:@"lastFollow"];
+    }
     [query setLimit:[[[NSUserDefaults standardUserDefaults] objectForKey:@"accountlimit"] intValue]];
     load++;
     if (![[DataHolder DataHolderSharedInstance].userSelectedType isEqualToString:@"All Topics"]) {
@@ -384,7 +389,7 @@
         if(x<0)
             coins-=2;
         
-        if (coins<100) {
+        if (coins<200) {
             CurrentUserObject[@"isOnPromotion"]=[NSNumber numberWithBool:NO];
         }
         if(coins<0)
@@ -480,7 +485,7 @@
         [[DataHolder DataHolderSharedInstance].UserObject saveInBackground];
     }
     else{
-        if ([[DataHolder DataHolderSharedInstance].UserObject[@"coins"] integerValue]>=500) {
+        if ([[DataHolder DataHolderSharedInstance].UserObject[@"coins"] integerValue]>=1000) {
             [DataHolder DataHolderSharedInstance].UserObject[@"isOnPromotion"]=[NSNumber numberWithBool:YES];
             [[DataHolder DataHolderSharedInstance].UserObject saveInBackground];
             UIAlertView* alert = [[UIAlertView alloc]initWithTitle:@"شكرا لك" message:@"الأن حسابك ضمن الحسابات المميزة التي ستظهر لكل شخص.\nو مع كل عملية تابع تحصل عليها سيتم الخصم من نقاطك نقتطين.\nو عند نفاذ نقاطك لن تحصل على متابعين جدد لذلك ننصح بمتابعة دائمة لنقاطك و تزويدها إما بمتابعة الأخرين أو شراء نقاط." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -488,7 +493,7 @@
         }
         else{
         
-            [[AppManager AppManagerSharedInstance] Show_Alert_With_Title:@"عذراً" message:@"أنت بحاجة ل 500 نقاط على الأقل لتفعيل الفولو التلقائي."];
+            [[AppManager AppManagerSharedInstance] Show_Alert_With_Title:@"عذراً" message:@"أنت بحاجة ل 1000 نقاط على الأقل لتفعيل الفولو التلقائي."];
         }
         
     }

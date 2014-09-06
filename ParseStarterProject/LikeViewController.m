@@ -52,7 +52,7 @@
     coinsLabel.layer.cornerRadius = 10;
     if ([UIScreen mainScreen].bounds.size.height==568) {
         getlikesView.frame=CGRectMake(0, 70, 320, 500);
-        ImageView.frame=CGRectMake(ImageView.frame.origin.x, ImageView.frame.origin.y, 280, 280);
+        asyncImageView.frame=CGRectMake(asyncImageView.frame.origin.x, asyncImageView.frame.origin.y, 280, 280);
     }
     // Do any additional setup after loading the view from its nib.
 }
@@ -92,8 +92,14 @@
     self.view.userInteractionEnabled=NO;
     PFQuery *query = [PFQuery queryWithClassName:@"MediaLikes"];
     [query whereKey:@"liked" notEqualTo:[DataHolder DataHolderSharedInstance].UserID];
-    [query whereKey:@"skip" notEqualTo:[DataHolder DataHolderSharedInstance].UserID];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    [query whereKey:@"likesDue" greaterThan:[NSNumber numberWithInt:0]];
+   // [query setLimit:[[[NSUserDefaults standardUserDefaults] objectForKey:@"accountlimit"] intValue]];
+    [query  whereKey:@"skip" notEqualTo:[DataHolder DataHolderSharedInstance].UserID];
+
+    //query.skip=skip;
+    query.limit=10;
+    [query orderByDescending:@"likesDue"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
@@ -116,15 +122,16 @@
     skipBtn.enabled=NO;
     if ([DataHolder DataHolderSharedInstance].OBjectsTobeLiked.count>0) {
         PFObject *Object=[[DataHolder DataHolderSharedInstance].OBjectsTobeLiked objectAtIndex:0];
-        [Object refresh];
-        NSArray *arr=[Object objectForKey:@"liked"];
+       // [Object refresh];
+      /*  NSArray *arr=[Object objectForKey:@"liked"];
         if ([[Object objectForKeyedSubscript:@"likesDue"] integerValue]==arr.count) {
         
             [[DataHolder DataHolderSharedInstance].OBjectsTobeLiked removeObjectAtIndex:0];
             [self GetImageFromArray];
-        }
+        }*/
         NSString *imageID=[Object objectForKey:@"mediaId"];
         [[WebManager WebManagerSharedInstance] FetchMediaObjectsWithMediaId:imageID Delegate:self WithSelector:@selector(MediaFetched:) WithErrorSelector:@selector(Error:)];
+       
         
         
     }
@@ -138,17 +145,16 @@
 }
 -(void)MediaFetched:(NSData*)data{
 
-    NSString *a = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    NSLog(@" Media Data: %@", a);
-    MediaObject *obj=[[JSONParser JSONParserSharedInstance] ParseMediaObject:data];
-    NSLog(@" link: %@", obj.low_resolution);
-    [self loadFromURL:[NSURL URLWithString:obj.low_resolution] callback:^(UIImage *image) {
-        ImageView.image=image;
+   
+        NSString *a = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        NSLog(@" Media Data: %@", a);
+        MediaObject *obj=[[JSONParser JSONParserSharedInstance] ParseMediaObject:data];
+        NSLog(@" link: %@", obj.low_resolution);
+        [asyncImageView loadImageFromURL:[NSURL URLWithString:obj.low_resolution]];
         likeBtn.enabled=YES;
         skipBtn.enabled=YES;
         act.hidden=YES;
-    }];
-    self.view.userInteractionEnabled=YES;
+        self.view.userInteractionEnabled=YES;
 
 }
 -(IBAction)LikeCurrentMedia{
@@ -156,6 +162,7 @@
     act.hidden=NO;
     likeBtn.enabled=NO;
     skipBtn.enabled=NO;
+    NSLog(@"%@",[DataHolder DataHolderSharedInstance].OBjectsTobeLiked);
     if ([DataHolder DataHolderSharedInstance].OBjectsTobeLiked.count>0) {
     PFObject *Object=[[DataHolder DataHolderSharedInstance].OBjectsTobeLiked objectAtIndex:0];
     [[WebManager WebManagerSharedInstance] LikeMediaObjectWithID:[Object objectForKey:@"mediaId"] Delegate:self WithSelector:@selector(Liked:) WithErrorSelector:@selector(Error:)];
@@ -187,6 +194,9 @@
     NSMutableArray *arr=[[NSMutableArray alloc] initWithArray:[Object objectForKey:@"liked"]];
     [arr addObject:[DataHolder DataHolderSharedInstance].UserID];
     Object[@"liked"]=arr;
+     int mycoins=[Object[@"likesDue"] integerValue];
+   Object[@"likesDue"]=[NSNumber numberWithInt:mycoins-1];
+    
     [Object saveInBackground];
     PFObject *user=[DataHolder DataHolderSharedInstance].UserObject;
     int coins=[[user objectForKey:@"coins"] integerValue]+1;
